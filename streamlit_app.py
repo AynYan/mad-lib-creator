@@ -4,37 +4,49 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
 
-def generate_books_to_read(favorite_book: str,favorite_book_series:str) -> list[str]:
+def generate_paragraph(noun2: str,noun1:str) -> list[str]:
     """
     Generate a list of 5 baby names
 
     Parameters:
-    favorite_book (str): favorite singular book
-    favorite_book_series (str) : 1st favorite book series
+    noun2 (str): a
+    noun1 (str) : b
+    noun3 (str): f
+    adv1 (str) : e
+    adv2 (str) : c
+    ed_verb (str) :  d
+    adj(str): g
+    
 
     Returns:
-    list: list of books to read
+    paragraph: madlibs filled in paragraph
     """
 
     prompt_template_name = PromptTemplate(
-        input_variables=['gender', 'favorite_book'],
-        template="""= I like the book series {favorite_book_series} and the book called: {favorite_book}. 
-        Suggest the top 5 books I should read based on my favorite books.
+        input_variables=['gender', 'noun2'],
+        template="""= Make a madlibs. 
+        In this madlibs, the following things to replace are: a verb that ends in -ed, 3 nouns, 1 adj, and 2 adverbs. 
+        Use the words {ed_verb}, {noun1},{noun2},{noun3},{adj},{adv1},{adv2} to fill in the blanks.
                      """
                 )
 
     name_chain = LLMChain(llm=llm,
                           prompt=prompt_template_name,
-                          output_key='books_to_read')
+                          output_key='paragraph')
 
     chain = SequentialChain(
         chains=[name_chain],
-        input_variables=['favorite_book_series', 'favorite_book'],
-        output_variables=['books_to_read']
+        input_variables=['noun1', 'noun2','noun3','ed_verb','adj','adv1','adv2'],
+        output_variables=['paragraph']
     )
 
-    response = chain({'favorite_book_series': favorite_book_series,
-                      'favorite_book': favorite_book})
+    response = chain({'noun1': noun1,
+                      'noun2': noun2
+                      'ed_verb':ed_verb
+                        'adj':adj
+                        'adv1':adv1
+                        'adv2;':adv2
+                        'noun3':noun3})
     return response
 
 
@@ -59,14 +71,18 @@ llm = OpenAI(model_name="gpt-3.5-turbo-instruct", temperature = 0.6)
 
 
 # ask user for what they want
-favorite_book_series = st.text_input("Enter the name of your favorite book series: ")
-favorite_book = st.text_input("Enter the name of your favorite book: ")
-
+noun1 = st.text_input("Enter a noun: ")
+noun2 = st.text_input("Enter a noun: ")
+noun3 = st.text_input("Enter a noun: ")
+adv2 = st.text_input("Enter an adverb: ")
+adv1 = st.text_input("Enter an adverb: ")
+adj = st.text_input("Enter an adjective: ")
+ed_verb = st.text_input("Enter a verb that ends in -ed: ")
 # get the answer from LLM
-if favorite_book_series and favorite_book:
-    response = generate_books_to_read(favorite_book_series, favorite_book)
-    books_to_read = response['books_to_read'].strip().split(",")
-    st.write("** Top 5 Books to Read **")
+if noun1 and noun2 and noun3 and adv2 and adv1 and adj and ed_verb:
+    response = generate_paragraph(noun1, noun2,noun3, adj,adv1, adv2, ed_verb)
+    paragraph = response['paragraph'].strip().split(",")
+    st.write("** Madlibs **")
 
-    for book in books_to_read:
-        st.write("--", book)
+    for word in paragraph:
+        st.write("--", word)
