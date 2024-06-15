@@ -4,7 +4,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.chains import SequentialChain
 
-def generate_paragraph(noun2: str,noun1:str) -> list[str]:
+def generate_paragraph(noun2: str,noun1:str,noun3:str,adv1:str,adv2:str,adj:str,ed_verb: str) -> list[str]:
     """
     Generate a list of 5 baby names
 
