@@ -85,5 +85,4 @@ if noun1 and noun2 and noun3 and adv2 and adv1 and adj and ed_verb:
     paragraph = response['paragraph'].strip().split(",")
     st.write("** Madlibs **")
 
-    for word in paragraph:
-        st.write("--", word)
+    st.write(paragraph)
