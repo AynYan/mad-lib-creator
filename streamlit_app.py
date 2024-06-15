@@ -37,17 +37,18 @@ adjective - {}""".format(noun1,noun2,noun3,ed_verb,adv1,adv2,adj)
 
     chain = SequentialChain(
         chains=[name_chain],
-        input_variables=['noun1', 'noun2','noun3','ed_verb','adj','adv1','adv2'],
+        input_variables=[],
         output_variables=['paragraph']
     )
-
-    response = chain({'noun1': noun1,
-                      'noun2': noun2,
-                      'noun3': noun3,
-                      'ed_verb':ed_verb,
-                      'adj':adj,
-                      'adv1':adv1,
-                      'adv2':adv2})
+#'noun1', 'noun2','noun3','ed_verb','adj','adv1','adv2'
+    response = chain({})
+    #                  'noun1': noun1,
+     #                 'noun2': noun2,
+      #                'noun3': noun3,
+       #               'ed_verb':ed_verb,
+        #              'adj':adj,
+         #             'adv1':adv1,
+          #            'adv2':adv2
     return response
 
 
