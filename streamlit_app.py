@@ -24,10 +24,11 @@ def generate_paragraph(noun2: str,noun1:str,noun3:str,adv1:str,adv2:str,adj:str,
 
     prompt_template_name = PromptTemplate(
         input_variables=['noun1', 'noun2','noun3','adv1','adv2','adj','ed_verb'],
-        template="""= Make a madlibs. 
-        In this madlibs, the following things to replace are: a verb that ends in -ed, 3 nouns, 1 adj, and 2 adverbs. 
-        Use the words {ed_verb}, {noun1},{noun2},{noun3},{adj},{adv1},{adv2} to fill in the blanks.
-                     """
+        template="""= Write a fun paragraph. Replace a 3 nouns, a verb ending in ed, 2 adverbs, and an adjective with what i give you.
+3 nouns - {},{},{}
+verb ending in -ed - {}
+2 adverbs - {},{}
+adjective - {}""".format(noun1,noun2,noun3,ed_verb,adv1,adv2,adj)
                 )
 
     name_chain = LLMChain(llm=llm,
