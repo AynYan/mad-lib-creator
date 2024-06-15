@@ -41,11 +41,11 @@ def generate_paragraph(noun2: str,noun1:str) -> list[str]:
     )
 
     response = chain({'noun1': noun1,
-                      'noun2': noun2
-                      'ed_verb':ed_verb
-                        'adj':adj
-                        'adv1':adv1
-                        'adv2;':adv2
+                      'noun2': noun2,
+                      'ed_verb':ed_verb,
+                        'adj':adj,
+                        'adv1':adv1,
+                        'adv2;':adv2,
                         'noun3':noun3})
     return response
 
