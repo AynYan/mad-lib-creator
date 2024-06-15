@@ -46,7 +46,7 @@ def generate_paragraph(noun2: str,noun1:str,noun3:str,adv1:str,adv2:str,adj:str,
                       'ed_verb':ed_verb,
                       'adj':adj,
                       'adv1':adv1,
-                      'adv2;':adv2})
+                      'adv2':adv2})
     return response
 
 
