@@ -24,7 +24,7 @@ def generate_paragraph(noun2: str,noun1:str,noun3:str,adv1:str,adv2:str,adj:str,
 
     prompt_template_name = PromptTemplate(
         input_variables=['noun1', 'noun2','noun3','adv1','adv2','adj','ed_verb'],
-        template="""= Write a fun paragraph. Replace a 3 nouns, a verb ending in ed, 2 adverbs, and an adjective with what i give you.
+        template="""= Write a fun paragraph. Randomly replace a 3 nouns, a verb ending in ed, 2 adverbs, and an adjective with what i give you.
 3 nouns - {},{},{}
 verb ending in -ed - {}
 2 adverbs - {},{}
