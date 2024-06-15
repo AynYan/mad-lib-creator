@@ -72,10 +72,10 @@ llm = OpenAI(model_name="gpt-3.5-turbo-instruct", temperature = 0.6)
 
 # ask user for what they want
 noun1 = st.text_input("Enter a noun: ")
-noun2 = st.text_input("Enter a noun: ")
-noun3 = st.text_input("Enter a noun: ")
+noun2 = st.text_input("Enter another noun: ")
+noun3 = st.text_input("Enter yet another noun: ")
 adv2 = st.text_input("Enter an adverb: ")
-adv1 = st.text_input("Enter an adverb: ")
+adv1 = st.text_input("Enter another adverb: ")
 adj = st.text_input("Enter an adjective: ")
 ed_verb = st.text_input("Enter a verb that ends in -ed: ")
 # get the answer from LLM
