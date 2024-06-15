@@ -83,7 +83,8 @@ ed_verb = st.text_input("Enter a verb that ends in -ed: ")
 # get the answer from LLM
 if noun1 and noun2 and noun3 and adv2 and adv1 and adj and ed_verb:
     response = generate_paragraph(noun1, noun2,noun3, adj,adv1, adv2, ed_verb)
-    paragraph = response['paragraph'].strip().split(",")
-    st.write("** Madlibs **")
+    #paragraph = response['paragraph'].strip().split(",")
+    paragraph = response['paragraph']
 
+    st.write("** Madlibs **")
     st.write(paragraph)
